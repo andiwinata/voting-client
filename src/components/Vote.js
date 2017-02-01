@@ -1,5 +1,6 @@
 import React from 'react';
 
+const defaultPair = [];
 export default class Vote extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -10,7 +11,7 @@ export default class Vote extends React.PureComponent {
     }
 
     getPair() {
-        return this.props.pair;
+        return this.props.pair || defaultPair;
     }
 
     isDisabled() {
@@ -35,6 +36,6 @@ export default class Vote extends React.PureComponent {
             )}
         </div>
 
-        return (view);
+        return view;
     }
 }

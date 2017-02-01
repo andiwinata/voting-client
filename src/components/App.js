@@ -1,4 +1,11 @@
 import React from 'react';
+
+export default class App extends React.PureComponent {
+    render() {
+        return this.props.children;
+    }
+}
+
 // import { List, Map } from 'immutable';
 
 // const pair = List.of('Trainspotting', '28 Days Later');
@@ -7,12 +14,6 @@ import React from 'react';
 // const defaultPair = [];
 
 // const tally = Map({'Trainspotting': 5, '28 Days Later': 4});
-
-export default class App extends React.PureComponent {
-    render() {
-        return this.props.children;
-    }
-}
 
 // export default React.createClass({
 //     render: function () {
