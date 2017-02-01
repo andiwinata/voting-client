@@ -1,5 +1,6 @@
 import React from 'react';
 
+const defaultPair = [];
 export default class TallyResult extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -10,7 +11,7 @@ export default class TallyResult extends React.PureComponent {
     }
     
     getPair() {
-        return this.props.pair;
+        return this.props.pair || defaultPair;
     }
 
     getVotes(entry) {
