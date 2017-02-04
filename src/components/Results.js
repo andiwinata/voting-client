@@ -2,10 +2,11 @@ import React from 'react';
 import Winner from './Winner';
 import { connect } from 'react-redux';
 import TallyResult from './TallyResult';
+import * as actionCreators from '../action_creators';
 
 export class Results extends React.PureComponent {
     render() {
-        return this.props.winner ? 
+        return this.props.winner ?
             <Winner winner={this.props.winner}></Winner> :
             <TallyResult {...this.props} />;
     }
@@ -19,4 +20,6 @@ function mapStateToProps(state) {
     };
 }
 
-export const ResultsContainer = connect(mapStateToProps)(Results);
+export const ResultsContainer = connect(
+    mapStateToProps, actionCreators
+)(Results);
