@@ -7,7 +7,7 @@ import * as actionCreators from '../action_creators';
 export class Results extends React.PureComponent {
     render() {
         return this.props.winner ?
-            <Winner winner={this.props.winner}></Winner> :
+            <Winner winner={this.props.winner} resetVoting={this.props.resetVoting} /> :
             <TallyResult {...this.props} />;
     }
 }

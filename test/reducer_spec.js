@@ -129,4 +129,17 @@ describe('reducer', () => {
         }));
     });
 
+    it('handles SET_CLIENT_ID', () => {
+        const initialState = fromJS({});
+        const action = {
+            type: 'SET_CLIENT_ID',
+            clientId: 'CLIENT1234'
+        };
+        const nextState = reducer(initialState, action);
+
+        expect(nextState).to.equal(fromJS({
+            clientId: 'CLIENT1234'
+        }));
+    });
+
 });

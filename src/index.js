@@ -5,7 +5,9 @@ import { Route, Router, hashHistory } from 'react-router';
 
 import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducer';
-import { setState } from './action_creators';
+import { setState, setClientId } from './action_creators';
+
+import getClientId from './client_id';
 
 import remoteActionMiddleware from './remote_action_middleware';
 
@@ -26,6 +28,8 @@ socket.on('state', (state) => {
 const socketMiddleware = remoteActionMiddleware(socket);
 const createStoreWithMiddleware = applyMiddleware(socketMiddleware)(createStore);
 const store = createStoreWithMiddleware(reducer);
+
+store.dispatch(setClientId(getClientId()));
 
 const routes = <Route component={App}>
     <Route path="/results" component={ResultsContainer} />

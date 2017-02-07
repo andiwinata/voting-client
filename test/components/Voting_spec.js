@@ -4,6 +4,7 @@ import {
     renderIntoDocument,
     findRenderedDOMComponentWithClass,
     scryRenderedDOMComponentsWithTag,
+    scryRenderedDOMComponentsWithClass,
     Simulate
 } from 'react-addons-test-utils';
 
@@ -40,18 +41,6 @@ describe('Voting', () => {
         expect(votedWith).to.equal('Trainspotting');
     });
 
-    it('disables buttons when user has voted', () => {
-        const component = renderIntoDocument(
-            <Voting pair={["Trainspotting", "28 Days Later"]}
-                hasVoted="Trainspotting" />
-        );
-        const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
-
-        expect(buttons.length).to.equal(2);
-        expect(buttons[0].hasAttribute('disabled')).to.equal(true);
-        expect(buttons[1].hasAttribute('disabled')).to.equal(true);
-    });
-
     it('adds label to the voted entry', () => {
         const component = renderIntoDocument(
             <Voting pair={["Trainspotting", "28 Days Later"]}
@@ -66,8 +55,8 @@ describe('Voting', () => {
             <Voting winner="Trainspotting" />
         );
 
-        const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
-        expect(buttons.length).to.equal(0);
+        const voteComponents = scryRenderedDOMComponentsWithClass(component, 'vote-wrap');
+        expect(voteComponents.length).to.equal(0);
 
         // make sure only 1 component contain className="winner"
         const winner = findRenderedDOMComponentWithClass(component, 'winner');

@@ -56,4 +56,18 @@ describe('Results', () => {
         expect(winner.textContent).to.contain('Trainspotting');
     });
 
+    it('invokes action callback when reset button is clicked', () => {
+        let resetInvoked = false;
+        const pair = List.of('Trainspotting', '28 Days Later');
+        const component = renderIntoDocument(
+            <Results pair={pair}
+                winner={"MovieA"}
+                resetVoting={() => resetInvoked = true} />
+        );
+        const resetButton = findRenderedDOMComponentWithClass(component, 'reset-vote');
+        console.log(resetButton.onclick);
+        Simulate.click(resetButton);
+
+        expect(resetInvoked).to.equal(true);
+    });
 });

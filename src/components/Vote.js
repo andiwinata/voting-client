@@ -6,7 +6,6 @@ export default class Vote extends React.PureComponent {
         super(props);
 
         this.getPair = this.getPair.bind(this);
-        this.isDisabled = this.isDisabled.bind(this);
         this.hasVotedFor = this.hasVotedFor.bind(this);
     }
 
@@ -14,19 +13,14 @@ export default class Vote extends React.PureComponent {
         return this.props.pair || defaultPair;
     }
 
-    isDisabled() {
-        return !!this.props.hasVoted;
-    }
-
     hasVotedFor(entry) {
         return this.props.hasVoted === entry;
     }
 
     render() {
-        let view = <div className="voting">
+        let view = <div className="vote-wrap">
             {this.getPair().map(entry =>
                 <button key={entry}
-                    disabled={this.isDisabled()}
                     onClick={() => this.props.vote(entry)}>
                     <h1>{entry}</h1>
                     {this.hasVotedFor(entry) ?
