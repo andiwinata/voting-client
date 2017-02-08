@@ -14,7 +14,12 @@ export default class Vote extends React.PureComponent {
     }
 
     hasVotedFor(entry) {
-        return this.props.hasVoted === entry;
+        const myVote = this.props.myVote
+        if (myVote) {
+            return myVote.get('entry', null) === entry;
+        } else {
+            return false;
+        }
     }
 
     render() {
