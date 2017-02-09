@@ -1,8 +1,12 @@
 import React from 'react';
+import { ConnectionStateContainer } from './ConnectionState';
 
 export default class App extends React.PureComponent {
     render() {
-        return this.props.children;
+        return <div>
+            <ConnectionStateContainer />
+            {this.props.children}
+        </div>
     }
 }
 

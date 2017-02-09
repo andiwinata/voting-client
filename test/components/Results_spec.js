@@ -65,7 +65,6 @@ describe('Results', () => {
                 resetVoting={() => resetInvoked = true} />
         );
         const resetButton = findRenderedDOMComponentWithClass(component, 'reset-vote');
-        console.log(resetButton.onclick);
         Simulate.click(resetButton);
 
         expect(resetInvoked).to.equal(true);

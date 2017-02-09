@@ -8,7 +8,7 @@ import {
     Simulate
 } from 'react-addons-test-utils';
 
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 import { Voting } from '../../src/components/Voting';
 import { expect } from 'chai'
 
@@ -42,9 +42,13 @@ describe('Voting', () => {
     });
 
     it('adds label to the voted entry', () => {
+        const myVote = Map({
+            round: 1000,
+            entry: 'Trainspotting'
+        });
         const component = renderIntoDocument(
             <Voting pair={["Trainspotting", "28 Days Later"]}
-                hasVoted="Trainspotting" />
+                myVote={myVote} />
         );
         const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
         expect(buttons[0].textContent).to.contain('Voted');

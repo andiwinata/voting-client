@@ -1,5 +1,12 @@
 import { List, Map, fromJS } from 'immutable';
 
+function setConnectionState(state, connectionState, connected) {
+    return state.set('connection', Map({
+        connectionState,
+        connected
+    }));
+}
+
 function setState(state, newState) {
     return state.merge(newState);
 }
@@ -35,6 +42,8 @@ export default function (state = Map(), action) {
             return vote(state, action.entry);
         case 'SET_CLIENT_ID':
             return state.set('clientId', action.clientId);
+        case 'SET_CONNECTION_STATE':
+            return setConnectionState(state, action.state, action.connected);
         case 'RESET_VOTING':
             return state.remove('winner')
                 .remove('myVote');

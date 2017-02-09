@@ -5,7 +5,7 @@ import { Route, Router, hashHistory } from 'react-router';
 
 import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducer';
-import { setState, setClientId } from './action_creators';
+import { setState, setClientId, setConnectionState } from './action_creators';
 
 import getClientId from './client_id';
 
@@ -19,11 +19,26 @@ import App from './components/App';
 import { VotingContainer } from './components/Voting';
 import { ResultsContainer } from './components/Results';
 
+require('./style.css');
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
 socket.on('state', (state) => {
     store.dispatch(setState(state));
 });
+
+// adding listener on each connection event for socket io
+// to be dispatched to store
+[
+    'connect',
+    'connect_error',
+    'connect_timeout',
+    'reconnect',
+    'reconnecting',
+    'reconnect_error',
+    'reconnect_failed'
+].forEach(ev =>
+    socket.on(ev, () => store.dispatch(setConnectionState(ev, socket.connected)))
+    );
 
 const socketMiddleware = remoteActionMiddleware(socket);
 const createStoreWithMiddleware = applyMiddleware(socketMiddleware)(createStore);
