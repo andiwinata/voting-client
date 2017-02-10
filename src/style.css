@@ -1,5 +1,115 @@
 body {
-  font-family: Roboto, 'Open Sans', sans-serif;
-  background-color: #673AB7;
-  color: white;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+  background-color: #91deff;
+  color: #fff;
+}
+
+button {
+  background: transparent;
+  border: 3px solid #fff;
+  color: inherit;
+  display: block;
+  border-radius: 10px;
+  transition: 0.25s ease-in-out;
+}
+
+button:hover {
+  background: #59bdff;
+  border-color: #0f7bff;
+  color: #0f7bff;
+}
+
+.hidden-none {
+  display: none;
+}
+
+/* App */
+#app {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Voting */
+.vote-wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vote-wrap button {
+  width: 500px;
+  min-height: 200px;  
+  margin: 1em 0;
+}
+
+.vote-wrap button div {
+  min-height: 2em;
+}
+
+.voted {
+  background: #0f7bff;
+}
+
+/* Results */
+
+.tally {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+
+.entry {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto 1em;
+  width: 350px;
+  height: 300px;
+  border: 3px solid #fff;
+  text-align: center;
+}
+
+.voteCount {
+  font-size: 4em;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.next {
+  margin: auto;
+  min-height: 50px;
+  min-width: 500px;
+}
+
+/* Winner */
+
+.winner {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.winner-name {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.winner button {
+  margin: 1em auto;
+  width: 50%;
+  min-height: 50px;
+  font-size: 1.2rem;
+}
+
+/* Connection State */
+
+.connectionState {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 5px;
+  text-align: center;
+  background-color: #B71C1C;
 }

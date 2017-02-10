@@ -12,19 +12,19 @@ describe('ConnectionState', () => {
 
     it ('is not visible when connected', () => {
         const component = renderIntoDocument(<ConnectionState connected={true} />);
-        const componentDOM = scryRenderedDOMComponentsWithClass(component, 'visible');
-        expect(componentDOM.length).to.equal(0);
+        const componentDOM = scryRenderedDOMComponentsWithClass(component, 'hidden-none');
+        expect(componentDOM.length).to.equal(1);
     });
 
     it ('is visible connected', () => {
         const component = renderIntoDocument(<ConnectionState connected={false} />);
-        const componentDOM = scryRenderedDOMComponentsWithClass(component, 'visible');
-        expect(componentDOM.length).to.equal(1);
+        const componentDOM = scryRenderedDOMComponentsWithClass(component, 'hidden-none');
+        expect(componentDOM.length).to.equal(0);
     });
 
     it ('contains connection state message', () => {
         const component = renderIntoDocument(<ConnectionState connected={false} connectionState="Fail" />);
-        const componentDOM = findRenderedDOMComponentWithClass(component, 'visible');
+        const componentDOM = findRenderedDOMComponentWithClass(component, 'connectionState');
         expect(componentDOM.textContent).to.contain("Fail");
     });
 

@@ -26,11 +26,12 @@ export default class Vote extends React.PureComponent {
         let view = <div className="vote-wrap">
             {this.getPair().map(entry =>
                 <button key={entry}
-                    onClick={() => this.props.vote(entry)}>
+                    onClick={() => this.props.vote(entry)}
+                    className={this.hasVotedFor(entry) ? "voted" : ""}>
                     <h1>{entry}</h1>
-                    {this.hasVotedFor(entry) ?
-                        <div className="label">Voted</div> : null
-                    }
+                    <div className="label">
+                        {this.hasVotedFor(entry) ? "Voted" : ""}
+                    </div>
                 </button>
             )}
         </div>

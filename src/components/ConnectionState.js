@@ -13,7 +13,7 @@ export class ConnectionState extends PureComponent {
 
     render() {
         return (
-            <div className={`connectionState ${this.isVisible() ? 'visible' : ''}`}>
+            <div className={`connectionState ${this.isVisible() ? '' : 'hidden-none'}`}>
                 {this.getMessage()}
             </div>
         );
